@@ -24,12 +24,22 @@ const openaiKey = process.env.OPENAI_API_KEY;
 export const createEmbeddings = async () => {
     // We're using openaiapi lm(davinci)
     const model = new OpenAI({apiKey: openaiKey});
-    const text = fs.readFileSync("GAN(Goodfellow).pdf", "utf-8");
+    const text = fs.readFileSync("GAN.pdf", "utf-8");
 
-    const text_splitter = new RecursiveCharacterTextSplitter({
+    const textSplitter = new RecursiveCharacterTextSplitter({
         chunkSize: 1000,
         chunkOverlap: 250,
     });
 
-    
+
+    const docs = await textSplitter.createDocuments([text]);
+
+    //Create a vector store from the documents
+    // We will be using FAISS
+    const vectorScore = await FaissStore.fromDocuments(
+        docs,
+        new OpenAIEmbeddings()
+    );
+
+
 }
