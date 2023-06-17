@@ -15,7 +15,7 @@ const openaiKey = process.env.OPENAI_API_KEY;
 // Create embeddings
 export const createEmbeddings = async (): Promise<void> => {
   // We're using OpenAI API with the davinci language model
-  const model = new OpenAI({ apiKey: openaiKey });
+  const model = new OpenAI({ openAIApiKey: openaiKey });
   const text = fs.readFileSync("GAN.pdf", "utf-8");
 
   const textSplitter = new RecursiveCharacterTextSplitter({
