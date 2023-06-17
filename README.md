@@ -10,3 +10,10 @@ We are making a semantic search tool that allows us to easier parse documents of
 - OpenAI Embeddings
 - OpenAI LM
 - Langhchain
+
+### Steps:
+
+''' bash
+
+npm install openai
+'''
