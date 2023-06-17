@@ -11,9 +11,8 @@ We are making a semantic search tool that allows us to easier parse documents of
 - OpenAI LM
 - Langhchain
 
-### Steps:
+### You have to npm install:
+- openai
+- langchain
 
-''' bash
-
-npm install openai
-'''
+Or generally follow the error msgs. Once project is done, we will add a prooper requirements.txt file.
