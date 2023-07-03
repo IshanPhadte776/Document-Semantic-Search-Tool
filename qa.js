@@ -1,6 +1,4 @@
-//Enables strict mode, enforces more rules and prevents certain types of errors
 "use strict";
-//sets up async function
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -10,8 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-//implements generators 
-//generators are functions  that can be exited and later re-entered allowing their code to be executed incrementally
 var __generator = (this && this.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
@@ -39,25 +35,30 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-//tells we are using ES Modules and not CommonJS
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createEmbeddings = void 0;
+//This import brings in the OpenAI class from the langchain/llms/openai module. It is used for interacting with the OpenAI API.
 var openai_1 = require("langchain/llms/openai");
+//These imports bring in the RetrievalQAChain and ConversationalRetrievalQAChain classes from the langchain/chains module. They are used for building retrieval-based question answering chains.
 var chains_1 = require("langchain/chains");
+//This import brings in the RecursiveCharacterTextSplitter class from the langchain/text_splitter module. It is used for splitting text into smaller chunks or documents.
 var text_splitter_1 = require("langchain/text_splitter");
+//This import brings in the entire fs module, which is a built-in Node.js module used for file system operations such as reading files.
 var fs = require("fs");
+//This import brings in the entire dotenv module, which is used for loading environment variables from a .env file into process.env.
 var dotenv = require("dotenv");
+//This import brings in the FaissStore class from the langchain/vectorstores/faiss module. It is used for creating and managing vector stores using the Faiss library.
 var faiss_1 = require("langchain/vectorstores/faiss");
+//This import brings in the OpenAIEmbeddings class from the langchain/embeddings/openai module. It is used for generating embeddings using the OpenAI language model.
 var openai_2 = require("langchain/embeddings/openai");
+//dotenv.config() loads environment variables from a .env file located in the same directory as the script.
 dotenv.config();
 var openaiKey = process.env.OPENAI_API_KEY;
 // Create embeddings
 var createEmbeddings = function () { return __awaiter(void 0, void 0, void 0, function () {
-    //has these variables
     var model, text, textSplitter, docs, vectorStore, chain, response;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            //Default case
             case 0:
                 model = new openai_1.OpenAI({ openAIApiKey: openaiKey });
                 text = fs.readFileSync("GAN.pdf", "utf-8");
